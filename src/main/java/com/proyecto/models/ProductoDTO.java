@@ -1,5 +1,7 @@
 package com.proyecto.models;
 
+
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,6 +15,7 @@ public class ProductoDTO {
 	private Double precio_compra;
 	private Double iva_compra;
 	private Double precio_venta;
+	
 	public String get_id() {
 		return _id;
 	}
