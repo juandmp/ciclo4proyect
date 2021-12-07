@@ -16,40 +16,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.proyecto.models.ClienteDTO;
-import com.proyecto.repositores.IClienteDAO;
+import com.proyecto.models.ConsolidadoDTO;
+import com.proyecto.repositores.IConsolidadoDAO;
 
 @RestController
 @CrossOrigin(origins ="*", methods = {RequestMethod.POST, RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE})
-@RequestMapping("/api/clientes")
-public class ClienteController {
+@RequestMapping("/api/consolidado")
+public class ConsolidadoController {
 	@Autowired
-	private IClienteDAO repository;
+	private IConsolidadoDAO repository;
 
-	@PostMapping("/cliente")
-	public ClienteDTO create(@Validated @RequestBody ClienteDTO c) {
-		return repository.insert(c);
+	@PostMapping("/consolidado")
+	public ConsolidadoDTO create(@Validated @RequestBody ConsolidadoDTO p) {
+		return repository.insert(p);
 	}
 
 	@GetMapping("/")
-	public List<ClienteDTO> readAll(){
+	public List<ConsolidadoDTO> readAll(){
 		return repository.findAll();
 	}
 
-	@GetMapping("/cliente/{id}")
-	public Optional<ClienteDTO> readId(@PathVariable String id){
+	@GetMapping("/consolidado/{id}")
+	public Optional<ConsolidadoDTO> readId(@PathVariable String id){
 		return repository.findById(id);
 	}
-	@PutMapping("/cliente/{id}")
-	public ClienteDTO update(@PathVariable String id, @Validated @RequestBody ClienteDTO c) {
-		return repository.save(c);
+	@PutMapping("/consolidado/{id}")
+	public ConsolidadoDTO update(@PathVariable String id, @Validated @RequestBody ConsolidadoDTO p) {
+		return repository.save(p);
 	}
 
-	@DeleteMapping("/cliente/{id}")
+	@DeleteMapping("/consolidado/{id}")
 	public void delete(@PathVariable String id) {
 		repository.deleteById(id);
-	}
-	}
+	}	
 
-
-
+}

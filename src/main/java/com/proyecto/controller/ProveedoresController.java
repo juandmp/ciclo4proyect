@@ -16,40 +16,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.proyecto.models.ClienteDTO;
-import com.proyecto.repositores.IClienteDAO;
+
+import com.proyecto.models.ProveedoresDTO;
+import com.proyecto.repositores.IProveedoresDAO;
 
 @RestController
 @CrossOrigin(origins ="*", methods = {RequestMethod.POST, RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE})
-@RequestMapping("/api/clientes")
-public class ClienteController {
+@RequestMapping("/api/proveedores")
+public class ProveedoresController {
 	@Autowired
-	private IClienteDAO repository;
+	private IProveedoresDAO repository;
 
-	@PostMapping("/cliente")
-	public ClienteDTO create(@Validated @RequestBody ClienteDTO c) {
+	@PostMapping("/proveedores")
+	public ProveedoresDTO create(@Validated @RequestBody ProveedoresDTO c) {
 		return repository.insert(c);
 	}
 
 	@GetMapping("/")
-	public List<ClienteDTO> readAll(){
+	public List<ProveedoresDTO> readAll(){
 		return repository.findAll();
 	}
 
-	@GetMapping("/cliente/{id}")
-	public Optional<ClienteDTO> readId(@PathVariable String id){
+	@GetMapping("/proveedores/{id}")
+	public Optional<ProveedoresDTO> readId(@PathVariable String id){
 		return repository.findById(id);
 	}
-	@PutMapping("/cliente/{id}")
-	public ClienteDTO update(@PathVariable String id, @Validated @RequestBody ClienteDTO c) {
+	@PutMapping("/proveedores/{id}")
+	public ProveedoresDTO update(@PathVariable String id, @Validated @RequestBody ProveedoresDTO c) {
 		return repository.save(c);
 	}
 
-	@DeleteMapping("/cliente/{id}")
+	@DeleteMapping("/proveedores/{id}")
 	public void delete(@PathVariable String id) {
 		repository.deleteById(id);
 	}
-	}
 
-
-
+}
